@@ -84,9 +84,24 @@ const updateData = (req, res)=> {
     }
 }
 
+const deleteAll = (req, res)=> {
+    try {
+        const allAnswers = loadData();
+        allAnswers.all = [];
+        if (saveData(allAnswers)) {
+            res.status(200).send(allAnswers);
+        } else {
+            res.status(500).send("Cannot delete data");
+        }
+    }catch (error){
+        res.status(500).send("error on delete");
+    }
+}
+
 app.post('/addData', addData);
 app.get('/allData', getAllData);
 app.patch('/update/:id', updateData)
+app.delete('/deleteAll', deleteAll)
 
 const PORT = 3000;
 app.listen(PORT, () => {
