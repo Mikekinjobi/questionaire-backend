@@ -48,6 +48,7 @@ const addData = async (req, res) => {
       table2Choices,
       table2Evalue,
       table2Result,
+      timeSpent,
     } = req.body;
     const result = await Manager.create({
       age,
@@ -63,6 +64,7 @@ const addData = async (req, res) => {
       table2Choices,
       table2Evalue,
       table2Result,
+      timeSpent,
     });
     console.log(result)
     res.status(200).send({added: result});

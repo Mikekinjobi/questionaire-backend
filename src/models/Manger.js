@@ -15,7 +15,8 @@ const managerSchema = new Schema({
     education: {type: String},
     employment: {type: String},
     table1Result: {type: String},
-    table2Result: {type: String}
+    table2Result: {type: String},
+    timeSpent: {type: String}
 });
 
 module.exports = mongoose.model("Manager", managerSchema);
