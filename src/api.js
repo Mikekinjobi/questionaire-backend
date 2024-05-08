@@ -5,10 +5,12 @@ const cors = require("cors");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
 const Manager = require("./models/Manger");
+const employeeRouter = require("./routers/employeeRouter")
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use("/employees", employeeRouter);
 
 const dataFilePath = path.join(__dirname, "/data/answers.json");
 
@@ -108,10 +110,21 @@ const deleteAll = async (req, res) => {
   }
 };
 
+const deleteOne = async (req, res) => {
+    const id = req.params.id
+    try {
+      const result = await Manager.deleteOne({answerId: id})
+      res.status(200).json({deleted: result})
+    } catch (error) {
+      res.status(500).send("error on delete");
+    }
+  };
+
 app.post("/addData", addData);
 app.get("/allData", getAllData);
 app.patch("/update/:id", updateData);
 app.delete("/deleteAll", deleteAll);
+app.delete("/delete/:id", deleteOne)
 
 connectDB();
 
@@ -122,4 +135,3 @@ mongoose.connection.once("open", () => {
     console.log(`listening on ${PORT}`);
   });
 });
-
