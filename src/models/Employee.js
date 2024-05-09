@@ -11,6 +11,7 @@ const employeeSchema = new Schema({
     education: {type: String},
     employment: {type: String},
     timeSpent: {type: String},
+    managerId: {type: String},
     answers: {type: [[String, Number]]}
 });
 

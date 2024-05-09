@@ -4,7 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
-const Manager = require("./models/Manger");
+const Manager = require("./models/Manager");
 const employeeRouter = require("./routers/employeeRouter")
 
 const app = express();
