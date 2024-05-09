@@ -12,7 +12,7 @@ const employeeSchema = new Schema({
     employment: {type: String},
     timeSpent: {type: String},
     managerId: {type: String},
-    answers: {type: [[String, Number]]}
+    answers: {type: [String]}
 });
 
 module.exports = mongoose.model("Employee", employeeSchema);
