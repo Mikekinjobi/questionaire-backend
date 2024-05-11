@@ -12,7 +12,16 @@ const employeeSchema = new Schema({
     employment: {type: String},
     timeSpent: {type: String},
     managerId: {type: String},
-    answers: {type: [String]}
+    answers: {type: [String]},
+    eValue: {type: Number},
+    numberOfAnsweredQuestions: {type: Number},
+    numberOfSkippedQuestions: {type: Number},
+    result: {type: String},
+    skippedQuestions: {type: [String]},
+    totalPossibleEvalue: {type: Number},
+    totalQuestions: {type: Number},
+    percentageCorrectAnswers: {type: String},
+    percentageSkippedQuestions: {type: String}
 });
 
 module.exports = mongoose.model("Employee", employeeSchema);

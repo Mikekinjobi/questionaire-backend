@@ -15,8 +15,17 @@ const addData = async (req, res) => {
         location,
         managerId,
         timeSpent,
+        eValue,
+        numberOfAnsweredQuestions,
+        numberOfSkippedQuestions,
+        result,
+        skippedQuestions,
+        totalPossibleEvalue,
+        totalQuestions,
+        percentageCorrectAnswers,
+        percentageSkippedQuestions
       } = req.body;
-      const result = await Employee.create({
+      const postResult = await Employee.create({
         age,
         answerId,
         createdAt,
@@ -26,10 +35,19 @@ const addData = async (req, res) => {
         location,
         managerId,
         timeSpent,
-        answers
+        answers,
+        eValue,
+        numberOfAnsweredQuestions,
+        numberOfSkippedQuestions,
+        result,
+        skippedQuestions,
+        totalPossibleEvalue,
+        totalQuestions,
+        percentageCorrectAnswers,
+        percentageSkippedQuestions
       });
-      console.log(result)
-      res.status(200).send({added: result});
+      console.log(postResult)
+      res.status(200).send({added: postResult});
     } catch (error) {
       console.error("Error adding data:", error);
       res.status(500).send(error.message);
