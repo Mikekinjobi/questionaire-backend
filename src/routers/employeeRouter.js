@@ -16,6 +16,7 @@ const addData = async (req, res) => {
         managerId,
         timeSpent,
         eValue,
+        correctAnswers,
         numberOfAnsweredQuestions,
         numberOfSkippedQuestions,
         result,

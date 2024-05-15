@@ -14,6 +14,7 @@ const employeeSchema = new Schema({
     managerId: {type: String},
     answers: {type: [String]},
     eValue: {type: Number},
+    correctAnswers: {type: Number},
     numberOfAnsweredQuestions: {type: Number},
     numberOfSkippedQuestions: {type: Number},
     result: {type: String},
