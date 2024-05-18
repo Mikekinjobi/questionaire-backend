@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Employee = require("../models/Employee")
+const Selection = require("../models/Selection") 
 
 const addData = async (req, res) => {
     try {
@@ -98,11 +99,46 @@ const addData = async (req, res) => {
         res.status(500).send("error on delete");
       }
     };
+
+  const getIndex = async (req, res) => {
+    try {
+      const index = await Selection.findOne({_id: "664903425dac877380587ba6"});
+      res.status(200).send(index)
+    } catch (error) {
+      res.status(500).send({error})
+    }
+  }
+
+  const postIndex = async (req, res)=> {
+      try {
+        const {index} = req.body;
+          const result = await Selection.create({
+            index
+          })
+          res.status(200).send({added: result})
+      } catch (error) {
+        res.status(500).send({error})
+      }
+  }
+
+  const indexUpdate = async (req, res)=> {
+    const id = "664903425dac877380587ba6";
+    const {index} = req.body
+    try {
+      const result = await Selection.findOneAndUpdate({_id: id}, {index})
+      res.status(200).send({updated: result});
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
   
   router.post("/addData", addData);
   router.get("/allData", getAllData);
   router.patch("/update/:id", updateData);
   router.delete("/deleteAll", deleteAll);
   router.delete("/delete/:id", deleteOne)
+  router.get("/getIndex", getIndex)
+  router.post("/postIndex", postIndex)
+  router.patch("/updateIndex", indexUpdate)
   
   module.exports = router;
